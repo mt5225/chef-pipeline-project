@@ -47,7 +47,7 @@ pipeline {
         }
         stage('Push Archive') {
             steps {
-                withCredentials([file(credentialsId: 'CHEFAUTOPEM', variable: 'CHEFAUTOPEM'), file(credentialsId: 'KNIFERB', variable: 'KNIFERB')]) {
+                withCredentials([file(credentialsId: 'mt5225.pem', variable: 'CHEFAUTOPEM'), file(credentialsId: 'knife.rb', variable: 'KNIFERB')]) {
                     script {
                         for (f in findFiles(glob: "archives/${params.COOKBOOK}/${params.BUILD_REVISION}/${params.POLICY_NAME}*.tgz")) {
                             sh "chef push-archive ${POLICY_GROUP} ${f} --config ${KNIFERB}"
