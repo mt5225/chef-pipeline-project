@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'chef/chefdk:latest'
+            args '-u root:root'
         }
     }
 
